@@ -18,6 +18,7 @@
 # Load the readr package
 
 # ANSWER
+library(readr)
 
 
 ### QUESTION 2 ----- 
@@ -45,7 +46,9 @@
 col_names  <-  c("trial_num","speed_actual","speed_response","correct")
 
 # ANSWER
+ds1 <- read_tsv("data_A/6191_1.txt")
 
+ds1 <- read_tsv("data_A/6191_1.txt", col_names = col_names, skip = 7)
 
 
 ### QUESTION 3 ----- 
@@ -55,7 +58,9 @@ col_names  <-  c("trial_num","speed_actual","speed_response","correct")
 # Then write the new data to a CSV file in the "data_cleaned" folder
 
 # ANSWER
+ds1$trial_num_100 <- ds1$trial_num + 100
 
+write_csv(ds1, "data_cleaned/6191_1_100.csv")
 
 ### QUESTION 4 ----- 
 
@@ -63,6 +68,7 @@ col_names  <-  c("trial_num","speed_actual","speed_response","correct")
 # Store it to a variable
 
 # ANSWER
+full_file_names <- list.files("data_A", full.names = TRUE)
 
 
 ### QUESTION 5 ----- 
@@ -70,6 +76,7 @@ col_names  <-  c("trial_num","speed_actual","speed_response","correct")
 # Read all of the files in data_A into a single tibble called ds
 
 # ANSWER
+ds <- read_tsv(full_file_names, col_names = col_names, skip = 7)
 
 
 ### QUESTION 6 -----
@@ -83,7 +90,9 @@ col_names  <-  c("trial_num","speed_actual","speed_response","correct")
 # (It should work now, but you'll see a warning because of the erroneous data point)
 
 # ANSWER
+ds <- read_tsv(full_file_names, col_names = col_names, skip = 7, col_types = "iccl")
 
+ds$trial_num_100 <- ds$trial_num + 100
 
 ### QUESTION 7 -----
 
@@ -93,6 +102,7 @@ col_names  <-  c("trial_num","speed_actual","speed_response","correct")
 # Re-import the data so that filename becomes a column
 
 # ANSWER
+ds <- read_tsv(full_file_names, col_names = col_names, skip = 7, col_types = "iccl", id = "full_file_names")
 
 
 ### QUESTION 8 -----
@@ -102,4 +112,7 @@ col_names  <-  c("trial_num","speed_actual","speed_response","correct")
 # There are two sheets of data -- import each one into a new tibble
 
 # ANSWER
-
+install.packages("readxl")
+library(readxl)
+ps_df <- read_xlsx("data_B/participant_info.xlsx", sheet = 1)
+date_df <- read_xlsx("data_B/participant_info.xlsx", sheet = 2, col_names = FALSE)
