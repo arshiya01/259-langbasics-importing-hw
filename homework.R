@@ -1,5 +1,5 @@
 #PSYC 259 Homework 1 - Data Import
-#For full credit, provide answers for at least 6/8 questions
+#For full credit, provide answers for at least 6/8 questions (8/8)!
 
 #List names of students collaborating with (no more than 2): 
 
