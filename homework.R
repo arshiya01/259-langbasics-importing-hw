@@ -116,3 +116,6 @@ install.packages("readxl")
 library(readxl)
 ps_df <- read_xlsx("data_B/participant_info.xlsx", sheet = 1)
 date_df <- read_xlsx("data_B/participant_info.xlsx", sheet = 2, col_names = FALSE)
+
+#MComment: One recommendation - for date_df you should name the columns. See the key answer below for an example of how
+#Key: test_dates <- read_xlsx("data_B/participant_info.xlsx", col_names = c("participant", "test_date"), sheet = 2)
